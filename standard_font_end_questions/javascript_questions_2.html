@@ -1,0 +1,265 @@
+<html>
+  <head>
+
+<script>
+
+// Here are five challenges:
+
+// Write a function that shows the entire body
+
+// Write a function that hides the entire body (similar to hide_show)
+
+//  Validate user entering a string with max length of 10 characters
+// See bottom of the page for the input
+// Use console.log to show error message
+
+// Calculate factorial of an input number
+// Change the "result" string to show the final numbe
+
+// Write a function that traverses the table (similar to walk table) and calculates the total discounted amount using the discount percentages
+// Show the total in the <p class="total"> tag
+
+
+
+function show_everything() {
+    var body = document.getElementById("body")
+    console.log(body)
+}
+function hide_everything() {
+    var element = document.getElementById("body")
+    if (element.style.display == "" || element.style.display == 'block') {
+    element.style.display = 'none';
+    } else {
+    element.style.display = 'block';
+    }
+}
+
+
+function validate_input_2() {
+    var element = document.getElementById("enter_string");
+    var element_value = element.value;
+    var element_length = element_value.length;
+
+    if (isNaN(element_length) || element_length < 1 || element_length > 10) {
+    alert("That is not what I asked for");
+    } else {
+    alert("Your value:" + element_length);
+    }
+}
+
+function validate_input()
+{
+    var element = document.getElementById("numb");
+    var element_value = element.value;
+
+    if (isNaN(element_value) || element_value < 1 || element_value > 10) {
+    alert("That is not what I asked for");
+    } else {
+    alert("Your value:" + element_value);
+    }
+    
+}
+
+function compute_factorial() {
+    var element = document.getElementById("factorial");
+    var element_value = element.value;
+    var x = element_value;
+
+    if (isNaN(element_value) || element_value < 1 || element_value > 10) {
+    alert("That is not what I asked for");
+    } else {
+        fact = 1;
+        while (x > 0) {
+            fact *= x;
+            x--}
+        console.log(fact)
+    } 
+}
+
+
+function walk_table_2() {
+    var table = document.getElementById('tblOne');
+    var results = document.getElementById('total');
+
+    var rowLength = table.rows.length;
+    var sum = 0.0;
+
+    for(var i=1; i<rowLength; i+=1){
+       var row = table.rows[i];
+       amount = parseFloat(row.cells[2].innerHTML);
+       discount = amount*0.01*parseFloat(row.cells[3].innerHTML);
+       sum += discount;
+    }
+
+    results.innerHTML = sum;
+
+}
+
+function change_paragraph()
+{
+
+    var element = document.getElementById("change");
+    element.innerHTML = "Paragraph has some new text";
+
+}
+
+function change_style()
+{
+    var element = document.getElementById("change");
+
+    element.style.fontSize = "30px";
+    element.style.color = "red";
+}
+
+
+function hide_show()
+{
+    var element = document.getElementById("hideshow");
+
+
+    if (element.style.display == "" || element.style.display == 'block') {
+	element.style.display = 'none';
+    } else {
+	element.style.display = 'block';
+    }
+}
+
+function append_data()
+{
+    var append = document.getElementById('append');
+
+    append.innerHTML += "Such Append";
+
+}
+
+function walk_table() 
+{
+    var table = document.getElementById('tblOne');
+    var results = document.getElementById('results');
+
+    var rowLength = table.rows.length;
+    var sum = 0.0;
+
+    for(var i=1; i<rowLength; i+=1){
+	   var row = table.rows[i];
+	   sum += parseFloat(row.cells[2].innerHTML);
+    }
+
+    results.innerHTML += sum;
+}
+
+
+</script>
+
+
+<body id="body">
+
+<h1> HTML DOM + JavaScript Examples:</h1>
+
+<h2>Change values of tags</h2>
+
+<p id="change">
+
+This is some text in a paragraph tag.
+
+</p>
+
+<button type="button" onclick="change_paragraph()">Change Text</button>
+
+<button type="button" onclick="change_style()">Change Style</button>
+
+</br>
+
+</br>
+
+
+
+<h2>Showing/hiding elements</h2>
+
+<p id="hideshow">Hide and show this text</p>
+
+<button type="button" onclick="hide_show()">Submit</button>
+
+
+<h2> Appending data <h2>
+
+
+<div id="append"></div>
+
+<button type="button" onclick="append_data()">Append</button>
+
+<h2> Walking DOM Structures</h2>
+
+
+<table id="tblOne" style="width:100%">
+  <tr>
+    <td>Budget Item</td>
+    <td>Name</td>
+    <td>Amount</td>
+    <td>Discount</td> 
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Rent</td>
+    <td>2000.00</td> 
+    <td>10%</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Sandwiches</td>
+    <td>25.00</td> 
+    <td>20%</td>
+  </tr>
+
+</table>
+
+<h3>Sum:</h3>
+<div id="results"></div></br>
+
+<button type="button" onclick="walk_table()">Submit</button>
+
+
+<h2>Show Factorial</h2>
+
+<p>Enter any integer and we will calculate the factorial</p>
+<input id="numb" type="number">
+<button type="button" onclick="compute_factorial()">Submit</button>
+<p id="result">result</p>
+
+<h2>Show Body</h2>
+
+<p>Print the body</p>
+<button type="button" onclick="show_everything()">Submit</button>
+
+<h2>Hide Body</h2>
+
+<p>Hive everything!!!!</p>
+<button type="button" onclick="hide_everything()">Submit</button>
+
+<h2>Validate Input</h2>
+
+<p>Enter a number from 1 to 10</p>
+<input id="numb" type="number">
+<button type="button" onclick="validate_input()">Submit</button>
+
+<h2>Validate Input 2</h2>
+
+<p>Enter a string with max length of 10 characters</p>
+<input id="enter_string" type="text">
+<button type="button" onclick="validate_input_2()">Submit</button>
+
+<h2>Compute Factorial</h2>
+
+<p>Enter a number from 1 to 10</p>
+<input id="factorial" type="number">
+<button type="button" onclick="compute_factorial()">Submit</button>
+
+<h1>Challenges: </h1>
+<button type="button" onclick="walk_table_2()">Calculate Total with Percentage</button>
+<p id="total">Goes here</p>
+
+
+
+
+</body>
+</html>
